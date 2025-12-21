@@ -29,8 +29,11 @@ public class SecurityConfig {
                 sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll()
-                .anyRequest().authenticated()
+                .requestMatchers(
+        "/api/auth/signup",
+        "/api/auth/login",
+        "/error"
+).permitAll().anyRequest().authenticated()
             )
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
             .httpBasic(AbstractHttpConfigurer::disable)
@@ -40,3 +43,4 @@ public class SecurityConfig {
     }
 
 }
+
