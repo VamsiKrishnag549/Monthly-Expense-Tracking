@@ -22,9 +22,14 @@ public class UserService {
         return repo.findByEmail(email).isPresent();
     }
 
-    public User register(User user) {
+   public void register(User user) {
+
+        if (userRepository.existsByEmail(user.getEmail())) {
+            throw new RuntimeException("Email already exists");
+        }
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return repo.save(user);
+        userRepository.save(user);
     }
 
     public User login(String email, String password) {
@@ -38,3 +43,4 @@ public class UserService {
         return user;
     }
 }
+
