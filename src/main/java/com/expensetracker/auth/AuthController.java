@@ -9,7 +9,6 @@ import com.expensetracker.service.UserService;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
 
     private final UserService userService;
@@ -51,3 +50,4 @@ public class AuthController {
         return ResponseEntity.ok(token);
     }
 }
+
