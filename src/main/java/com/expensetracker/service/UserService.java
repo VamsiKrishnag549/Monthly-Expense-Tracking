@@ -18,9 +18,7 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public boolean existsByEmail(String email) {
-        return repo.findByEmail(email).isPresent();
-    }
+    
 
    public void register(User user) {
 
@@ -43,4 +41,5 @@ public class UserService {
         return user;
     }
 }
+
 
