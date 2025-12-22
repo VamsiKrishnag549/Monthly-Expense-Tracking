@@ -22,9 +22,7 @@ public class UserService {
 
    public void register(User user) {
 
-        if (userRepository.existsByEmail(user.getEmail())) {
-            throw new RuntimeException("Email already exists");
-        }
+        
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
@@ -41,5 +39,6 @@ public class UserService {
         return user;
     }
 }
+
 
 
