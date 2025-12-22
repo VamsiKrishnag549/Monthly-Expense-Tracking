@@ -23,13 +23,8 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody User user) {
 
-        if (userService.existsByEmail(user.getEmail())) {
-            return ResponseEntity.badRequest()
-                    .body("Email already exists");
-        }
-
-        userService.register(user);
-        return ResponseEntity.ok("User registered successfully");
+       userService.save(user);
+    return ResponseEntity.ok("User registered successfully");
     }
 
     // ✅ LOGIN
@@ -50,4 +45,5 @@ public class AuthController {
         return ResponseEntity.ok(token);
     }
 }
+
 
