@@ -25,7 +25,7 @@ public class UserService {
         
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        repo.save(user);
     }
 
     public User login(String email, String password) {
@@ -39,6 +39,7 @@ public class UserService {
         return user;
     }
 }
+
 
 
 
