@@ -18,6 +18,10 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
+     public void save(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        repo.save(user);
+    }
     
 
    public void register(User user) {
@@ -39,6 +43,7 @@ public class UserService {
         return user;
     }
 }
+
 
 
 
